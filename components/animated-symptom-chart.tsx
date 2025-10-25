@@ -19,7 +19,7 @@ const padding = 80
 
 export function AnimatedSymptomChart() {
   const [isVisible, setIsVisible] = useState(false)
-  const [animationProgress, setAnimationProgress] = useState(0)
+  const [pointProgress, setPointProgress] = useState<number[]>(new Array(symptomData.length).fill(0))
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -46,15 +46,24 @@ export function AnimatedSymptomChart() {
   useEffect(() => {
     if (isVisible) {
       const duration = 3000
+      const pointDelay = 150 // Delay between points
       const startTime = Date.now()
 
       const animate = () => {
         const elapsed = Date.now() - startTime
-        const progress = Math.min(elapsed / duration, 1)
-        const eased = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2
-        setAnimationProgress(eased)
+        const newProgress = symptomData.map((_, index) => {
+          const pointStart = index * pointDelay
+          const pointElapsed = Math.max(0, elapsed - pointStart)
+          const pointProgress = Math.min(pointElapsed / (duration - (symptomData.length - 1) * pointDelay), 1)
+          // Cubic easing for each point
+          return pointProgress < 0.5 
+            ? 4 * pointProgress * pointProgress * pointProgress 
+            : 1 - Math.pow(-2 * pointProgress + 2, 3) / 2
+        })
 
-        if (progress < 1) {
+        setPointProgress(newProgress)
+
+        if (elapsed < duration + (symptomData.length - 1) * pointDelay) {
           requestAnimationFrame(animate)
         }
       }
@@ -63,8 +72,10 @@ export function AnimatedSymptomChart() {
     }
   }, [isVisible])
 
-  const getYPosition = (value: number) => {
-    return chartHeight - padding - (value / maxValue) * (chartHeight - padding * 2)
+  const getYPosition = (value: number, progress: number) => {
+    const startY = chartHeight - padding
+    const targetY = chartHeight - padding - (value / maxValue) * (chartHeight - padding * 2)
+    return startY + (targetY - startY) * progress
   }
 
   const getXPosition = (index: number) => {
@@ -75,17 +86,15 @@ export function AnimatedSymptomChart() {
   const createPath = (dataKey: "pain" | "bloating" | "fatigue") => {
     const points = symptomData.map((d, i) => ({
       x: getXPosition(i),
-      y: getYPosition(d[dataKey]),
+      y: getYPosition(d[dataKey], pointProgress[i]),
     }))
 
-    const visiblePoints = points.slice(0, Math.ceil(points.length * animationProgress))
+    if (points.length === 0) return ""
 
-    if (visiblePoints.length === 0) return ""
+    let path = `M ${points[0].x} ${points[0].y}`
 
-    let path = `M ${visiblePoints[0].x} ${visiblePoints[0].y}`
-
-    for (let i = 1; i < visiblePoints.length; i++) {
-      path += ` L ${visiblePoints[i].x} ${visiblePoints[i].y}`
+    for (let i = 1; i < points.length; i++) {
+      path += ` L ${points[i].x} ${points[i].y}`
     }
 
     return path
@@ -112,9 +121,9 @@ export function AnimatedSymptomChart() {
             <line
               key={i}
               x1={padding}
-              y1={getYPosition(i)}
+              y1={getYPosition(i, 1)} // Grid lines are always fully visible
               x2={chartWidth - padding}
-              y2={getYPosition(i)}
+              y2={getYPosition(i, 1)}
               stroke="#d1d5db"
               strokeWidth="1.5"
               strokeDasharray="6 6"
@@ -153,48 +162,43 @@ export function AnimatedSymptomChart() {
           />
 
           {/* Data points */}
-          {symptomData.map((d, i) => {
-            const pointProgress = i / (symptomData.length - 1)
-            const isVisible = animationProgress >= pointProgress
-
-            return (
-              <g key={i}>
-                {/* Pain point */}
-                <circle
-                  cx={getXPosition(i)}
-                  cy={getYPosition(d.pain)}
-                  r="10"
-                  fill={colors.pain}
-                  opacity={isVisible ? 1 : 0}
-                  style={{
-                    transition: "opacity 0.5s ease-out",
-                  }}
-                />
-                {/* Bloating point */}
-                <circle
-                  cx={getXPosition(i)}
-                  cy={getYPosition(d.bloating)}
-                  r="10"
-                  fill={colors.bloating}
-                  opacity={isVisible ? 1 : 0}
-                  style={{
-                    transition: "opacity 0.5s ease-out",
-                  }}
-                />
-                {/* Fatigue point */}
-                <circle
-                  cx={getXPosition(i)}
-                  cy={getYPosition(d.fatigue)}
-                  r="10"
-                  fill={colors.fatigue}
-                  opacity={isVisible ? 1 : 0}
-                  style={{
-                    transition: "opacity 0.5s ease-out",
-                  }}
-                />
-              </g>
-            )
-          })}
+          {symptomData.map((d, i) => (
+            <g key={i}>
+              {/* Pain point */}
+              <circle
+                cx={getXPosition(i)}
+                cy={getYPosition(d.pain, pointProgress[i])}
+                r="10"
+                fill={colors.pain}
+                opacity={pointProgress[i]}
+                style={{
+                  transition: "opacity 0.5s ease-out",
+                }}
+              />
+              {/* Bloating point */}
+              <circle
+                cx={getXPosition(i)}
+                cy={getYPosition(d.bloating, pointProgress[i])}
+                r="10"
+                fill={colors.bloating}
+                opacity={pointProgress[i]}
+                style={{
+                  transition: "opacity 0.5s ease-out",
+                }}
+              />
+              {/* Fatigue point */}
+              <circle
+                cx={getXPosition(i)}
+                cy={getYPosition(d.fatigue, pointProgress[i])}
+                r="10"
+                fill={colors.fatigue}
+                opacity={pointProgress[i]}
+                style={{
+                  transition: "opacity 0.5s ease-out",
+                }}
+              />
+            </g>
+          ))}
 
           {/* X-axis labels */}
           {symptomData.map((d, i) => (
@@ -204,7 +208,7 @@ export function AnimatedSymptomChart() {
               y={chartHeight - 25}
               textAnchor="middle"
               className="text-base fill-foreground/70 font-semibold"
-              opacity={animationProgress}
+              opacity={pointProgress[i]}
             >
               {d.day}
             </text>
@@ -222,7 +226,7 @@ export function AnimatedSymptomChart() {
               key={item.label}
               className="flex items-center gap-3"
               style={{
-                opacity: animationProgress,
+                opacity: Math.max(...pointProgress), // Show legend based on maximum point progress
                 transition: "opacity 0.8s ease-out",
               }}
             >
