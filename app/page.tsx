@@ -442,7 +442,9 @@ export default function LandingPage() {
                 </div>
 
                 <a
-                  href="#"
+                  href="https://pubmed.ncbi.nlm.nih.gov/39056556/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-lg bg-accent text-white px-6 py-3 font-semibold text-sm shadow-sm hover:bg-accent/90 transition-colors duration-200"
                 >
                   <span>Read the Full Protocol Review</span>
