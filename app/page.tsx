@@ -65,6 +65,25 @@ export default function LandingPage() {
   const insightsAnimation = useScrollAnimation()
   const faqAnimation = useScrollAnimation()
   const ctaAnimation = useScrollAnimation()
+  const [showCookieBanner, setShowCookieBanner] = useState(false)
+
+  useEffect(() => {
+    try {
+      const consent = localStorage.getItem("cookieConsent")
+      if (!consent) setShowCookieBanner(true)
+    } catch (e) {
+      // ignore (localStorage may be unavailable)
+    }
+  }, [])
+
+  function acceptCookies() {
+    try {
+      localStorage.setItem("cookieConsent", "accepted")
+    } catch (e) {
+      // ignore
+    }
+    setShowCookieBanner(false)
+  }
 
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
@@ -74,7 +93,7 @@ export default function LandingPage() {
             <div className="flex items-center justify-center transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:rotate-3">
               <Image 
                 src="/image001.png"
-                alt="MYIBDCompass Logo"
+                alt="MyIBDCompass Logo"
                 width={140}
                 height={45}
                 style={{ objectFit: 'contain', width: 'auto', maxHeight: '40px' }}
@@ -258,8 +277,8 @@ export default function LandingPage() {
       {/* Supporters section - logos in a single row. Add your images to public/supporters/ e.g. crohns.png, mcmaster.png, omsa.png */}
       <section className="w-full bg-white -mt-12 pb-4">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-          <h3 className="text-center text-xs font-medium text-gray-500 mb-1">Supported by</h3>
-          <div className="flex items-center justify-center gap-12 flex-wrap">
+          <h3 className="text-center text-base md:text-lg font-semibold text-gray-500 mb-4">Supported by</h3>
+          <div className="flex items-center justify-center gap-12 flex-wrap mt-4">
             {/* Use files placed in public/supporters/ folder. If missing, these will show as broken images in dev but are easy to replace. */}
             <img
               src="/supporters/crohns.png"
@@ -519,6 +538,36 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Clinical Trials CTA - placed above FAQ */}
+      <section className="bg-gradient-to-b from-white via-accent/5 to-white py-12 md:py-16 relative overflow-hidden">
+        {/* Decorative gradient blobs to make the section pop */}
+        <div className="absolute -top-12 left-10 w-48 h-48 bg-accent/10 rounded-full blur-3xl transform -translate-x-4 animate-float" />
+        <div className="absolute -bottom-14 right-10 w-72 h-72 bg-accent/8 rounded-full blur-3xl animate-float" />
+
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <div className="relative rounded-2xl bg-white/60 backdrop-blur-sm p-8 md:p-12 shadow-lg overflow-hidden">
+            {/* subtle accent highlight behind the title */}
+            <div className="absolute -top-20 right-24 w-56 h-56 bg-gradient-to-r from-accent/40 via-yellow-200/20 to-transparent rounded-full blur-2xl opacity-80" />
+
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent/80">Join clinical trials</span>
+            </h2>
+
+            <p className="text-gray-600 mb-6">Pilot the MyIBDCompass app to help improve care for others with IBD</p>
+
+            <div className="flex justify-center">
+              <button
+                onClick={() => setIsWaitlistOpen(true)}
+                className="inline-flex items-center gap-2 rounded-xl bg-accent text-white px-6 py-3 text-sm font-semibold transition-all duration-300 ease-in-out shadow-xl hover:shadow-2xl hover:bg-accent/95 hover:scale-[1.02]"
+              >
+                <span>Join the Waitlist</span>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
         id="faq"
         ref={faqAnimation.ref}
@@ -541,28 +590,28 @@ export default function LandingPage() {
               }`}
               style={{ transitionDelay: "200ms" }}
             >
-              Answers to questions you might have about MYIBDCompass
+              Answers to questions you might have about MyIBDCompass
             </p>
           </div>
           <Accordion type="single" collapsible className="w-full space-y-4">
             {[
               {
-                question: "How does MYIBDCompass help manage IBD symptoms?",
+                question: "How does MyIBDCompass help manage IBD symptoms?",
                 answer:
-                  "MYIBDCompass helps you track your meals, identify trigger foods, and understand patterns between your diet and symptoms. Our evidence-based recommendations and personalized insights empower you to make informed dietary choices that support your IBD management.",
+                  "MyIBDCompass helps you track your meals, identify trigger foods, and understand patterns between your diet and symptoms. Our evidence-based recommendations and personalized insights empower you to make informed dietary choices that support your IBD management.",
                 delay: 400,
                 className: "animate-slide-up animate-delay-100"
               },
               {
                 question: "Is the dietary advice medically validated?",
                 answer:
-                  "Yes, all dietary guidelines and recommendations in MYIBDCompass are based on current scientific research and evidence-based practices for IBD management. However, always consult with your healthcare provider before making significant dietary changes.",
+                  "Yes, all dietary guidelines and recommendations in MyIBDCompass are based on current scientific research and evidence-based practices for IBD management. However, always consult with your healthcare provider before making significant dietary changes.",
                 delay: 500,
               },
               {
-                question: "Can I use MYIBDCompass alongside my current treatment plan?",
+                question: "Can I use MyIBDCompass alongside my current treatment plan?",
                 answer:
-                  "MYIBDCompass is designed to complement your existing treatment plan. It provides valuable insights that you can share with your healthcare team to optimize your overall IBD management strategy.",
+                  "MyIBDCompass is designed to complement your existing treatment plan. It provides valuable insights that you can share with your healthcare team to optimize your overall IBD management strategy.",
                 delay: 600,
               },
               {
@@ -574,7 +623,7 @@ export default function LandingPage() {
               {
                 question: "Can I export my data to share with my doctor?",
                 answer:
-                  "Yes! MYIBDCompass allows you to export comprehensive reports of your food logs, symptom tracking, and insights. You can easily share these reports with your healthcare provider to facilitate more informed discussions about your treatment.",
+                  "Yes! MyIBDCompass allows you to export comprehensive reports of your food logs, symptom tracking, and insights. You can easily share these reports with your healthcare provider to facilitate more informed discussions about your treatment.",
                 delay: 800,
               },
             ].map((item, index) => (
@@ -754,7 +803,7 @@ export default function LandingPage() {
                 <div className="flex items-center justify-center">
                   <Image 
                     src="/image001.png"
-                    alt="MYIBDCompass Logo"
+                    alt="MyIBDCompass Logo"
                     width={150}
                     height={50}
                     style={{ objectFit: 'contain', width: 'auto' }}
@@ -827,7 +876,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="mt-12 flex flex-col items-center justify-between gap-4 pt-8 md:flex-row">
-            <p className="text-sm text-muted-foreground">© 2025 MYIBDCompass. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">© 2025 MyIBDCompass. All rights reserved.</p>
             <div className="flex gap-4">
               <a href="#" className="text-muted-foreground transition-colors hover:text-foreground">
                 <Facebook className="h-5 w-5" />
@@ -845,6 +894,42 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+      {/* Cookie consent banner */}
+      {showCookieBanner && (
+        <div
+          role="dialog"
+          aria-live="polite"
+          className="fixed right-6 bottom-6 z-50 w-64 max-w-xs bg-white/95 border border-gray-200 shadow-md rounded-md px-3 py-2 flex items-center justify-between gap-3"
+        >
+          <div className="flex items-center gap-2">
+            <div className="h-6 w-6 rounded bg-accent/10 flex items-center justify-center text-accent text-[12px] font-semibold">i</div>
+            <div className="text-sm text-gray-700">Cookies</div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={acceptCookies}
+              className="rounded-md bg-accent text-white px-3 py-1 text-sm font-semibold"
+            >
+              Accept
+            </button>
+            <button
+              onClick={() => {
+                try {
+                  localStorage.setItem("cookieConsent", "dismissed")
+                } catch (e) {
+                  // ignore
+                }
+                setShowCookieBanner(false)
+              }}
+              aria-label="Close cookie banner"
+              className="text-sm text-muted-foreground"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

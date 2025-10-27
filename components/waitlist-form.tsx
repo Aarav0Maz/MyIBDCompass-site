@@ -68,7 +68,7 @@ export function WaitlistForm({ isOpen, onClose }: WaitlistFormProps) {
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center text-foreground">Join the Waitlist</DialogTitle>
           <DialogDescription className="text-center text-muted-foreground">
-            Be the first to know when MYIBDCompass launches in January 2026
+            Be the first to know when MyIBDCompass launches in January 2026
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-6 pt-4">
