@@ -318,7 +318,7 @@ export default function LandingPage() {
           <h2 className={`text-3xl md:text-4xl font-bold mb-10 text-center ${statsAnimation.isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent/80">The Hidden Epidemic</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left mb-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left mb-6">
             <div className={`rounded-2xl p-8 bg-white/50 backdrop-blur-sm flex flex-col items-center md:items-start ${statsAnimation.isVisible ? 'animate-scale-in animate-delay-100' : 'opacity-0'} hover:scale-[1.02] transition-all duration-300 hover:shadow-lg`}>
               <div className="text-3xl md:text-4xl font-extrabold text-accent mb-1">~1 in 150</div>
               <div className="text-base font-semibold text-gray-800">People live with IBD in North America</div>
