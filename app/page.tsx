@@ -274,36 +274,48 @@ export default function LandingPage() {
       </section>
 
 
-      {/* Supporters section - logos in a single row. Add your images to public/supporters/ e.g. crohns.png, mcmaster.png, omsa.png */}
+      {/* Supporters section - logos in a single row with improved responsive design */}
       <section className="w-full bg-white -mt-12 pb-4">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <h3 className="text-center text-base md:text-lg font-semibold text-gray-500 mb-4">Supported by</h3>
-          <div className="flex items-center justify-center gap-12 flex-wrap mt-4">
+          <div className="grid grid-cols-2 md:flex md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-12 mt-4">
             {/* Use files placed in public/supporters/ folder. If missing, these will show as broken images in dev but are easy to replace. */}
-            <img
-              src="/supporters/crohns.png"
-              alt="Crohn's & Colitis Foundation"
-              className="h-20 md:h-14 object-contain"
-              onError={(e) => ((e.currentTarget as HTMLImageElement).src = '/placeholder-logo.png')}
-            />
-            <img
-              src="/supporters/mcmaster.png"
-              alt="McMaster University"
-              className="h-12 md:h-16 object-contain"
-              onError={(e) => ((e.currentTarget as HTMLImageElement).src = '/placeholder-logo.png')}
-            />
-            <img
-              src="/supporters/omsa.png"
-              alt="OMSA"
-              className="h-14 md:h-20 object-contain"
-              onError={(e) => ((e.currentTarget as HTMLImageElement).src = '/placeholder-logo.png')}
-            />
-            <img
-              src="/supporters/partner4.png"
-              alt="Partner"
-              className="h-14 md:h-20 object-contain"
-              onError={(e) => ((e.currentTarget as HTMLImageElement).src = '/placeholder-logo.png')}
-            />
+            <div className="flex items-center justify-center">
+              <img
+                src="/supporters/crohns.png"
+                alt="Crohn's & Colitis Foundation"
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain max-w-[140px] sm:max-w-[160px] md:max-w-[180px]"
+                onError={(e) => ((e.currentTarget as HTMLImageElement).src = '/placeholder-logo.png')}
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+            <div className="flex items-center justify-center">
+              <img
+                src="/supporters/mcmaster.png"
+                alt="McMaster University"
+                className="h-10 sm:h-12 md:h-16 w-auto object-contain max-w-[140px] sm:max-w-[160px] md:max-w-[180px]"
+                onError={(e) => ((e.currentTarget as HTMLImageElement).src = '/placeholder-logo.png')}
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+            <div className="flex items-center justify-center">
+              <img
+                src="/supporters/omsa.png"
+                alt="OMSA"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain max-w-[140px] sm:max-w-[160px] md:max-w-[180px]"
+                onError={(e) => ((e.currentTarget as HTMLImageElement).src = '/placeholder-logo.png')}
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+            <div className="flex items-center justify-center">
+              <img
+                src="/supporters/partner4.png"
+                alt="Partner"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain max-w-[140px] sm:max-w-[160px] md:max-w-[180px]"
+                onError={(e) => ((e.currentTarget as HTMLImageElement).src = '/placeholder-logo.png')}
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
           </div>
         </div>
       </section>
