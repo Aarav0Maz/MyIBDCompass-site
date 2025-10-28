@@ -321,14 +321,14 @@ export default function LandingPage() {
       </section>
 
       {/* The Hidden Epidemic Section (Hybrid) */}
-      <section ref={statsAnimation.ref} className="w-full bg-gradient-to-b from-white via-accent/5 to-white py-16 md:py-24 relative overflow-hidden">
-        {/* Decorative gradient blobs */}
-        <div className="absolute -top-8 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-8 right-1/4 w-48 h-48 bg-accent/5 rounded-full blur-3xl" />
+      <section ref={statsAnimation.ref} className="w-full bg-white py-16 md:py-24 relative overflow-hidden z-10">
+        {/* Solid background with opacity instead of blur */}
+        <div className="absolute -top-8 left-1/4 w-64 h-64 bg-accent/5 rounded-full opacity-50" />
+        <div className="absolute -bottom-8 right-1/4 w-48 h-48 bg-accent/5 rounded-full opacity-50" />
         
-        <div className="container mx-auto px-4 md:px-6 max-w-5xl relative">
-          <h2 className={`text-3xl md:text-4xl font-bold mb-10 text-center ${statsAnimation.isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent/80">The Hidden Epidemic</span>
+        <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-20">
+          <h2 className={`text-3xl md:text-4xl font-bold mb-10 text-center transform transition-all duration-500 ease-in-out ${statsAnimation.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <span className="text-accent">The Hidden Epidemic</span>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left mb-6">
             <div className={`rounded-2xl p-8 bg-white/50 backdrop-blur-sm flex flex-col items-center md:items-start ${statsAnimation.isVisible ? 'animate-scale-in animate-delay-100' : 'opacity-0'} hover:scale-[1.02] transition-all duration-300 hover:shadow-lg`}>
