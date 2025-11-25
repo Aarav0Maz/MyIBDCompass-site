@@ -722,7 +722,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Bottom row: Prangad, Justine, Aarav */}
+            {/* Bottom rows: Prangad, Jasmine, Justine, then Liam & Aarav */}
             <div className="md:col-span-3 grid md:grid-cols-3 gap-6">
               <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
                 <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
@@ -733,11 +733,35 @@ export default function LandingPage() {
               </div>
 
               <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm flex items-center justify-center">
+                  <Image
+                    src="/team/jasmine-placeholder.svg"
+                    alt="Jasmine placeholder"
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="font-semibold text-gray-800 text-base text-center mb-1">Jasmine</div>
+                <div className="text-sm text-gray-500 text-center">Senior Engineer</div>
+              </div>
+
+              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
                 <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
                   <Image src="/team/justin.jpg" alt="Justine Mangaliman" width={128} height={128} className="w-full h-full object-cover" />
                 </div>
                 <div className="font-semibold text-gray-800 text-base text-center mb-1">Justine Mangaliman</div>
                 <div className="text-sm text-gray-500 text-center">Full Stack Developer</div>
+              </div>
+            </div>
+
+            <div className="md:col-span-3 grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
+                  <Image src="/team/Liam.JPG" alt="Liam" width={128} height={128} className="w-full h-full object-cover" />
+                </div>
+                <div className="font-semibold text-gray-800 text-base text-center mb-1">Liam</div>
+                <div className="text-sm text-gray-500 text-center">Front End Developer</div>
               </div>
 
               <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
