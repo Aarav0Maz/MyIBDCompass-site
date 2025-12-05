@@ -945,6 +945,9 @@ export default function LandingPage() {
           </div>
         </div>
       )}
+      <div className="fixed bottom-2 right-4 text-[8px] text-gray-300 pointer-events-none opacity-40">
+        V1.12
+      </div>
     </div>
   )
 }
