@@ -683,12 +683,12 @@ export default function LandingPage() {
                   { src: "/team/aryan.jpg", alt: "Aryan Shah (BSc)", name: "Aryan Shah (BSc)", role: "Co-founder" },
                   { src: "/team/alexandra.jpg", alt: "Alexandra Gleave (MD)", name: "Alexandra Gleave (MD)", role: "Co-founder" },
                 ].map((member, index) => (
-                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] md:h-[240px] lg:h-[260px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 md:h-32 lg:h-36 w-24 sm:w-28 md:w-32 lg:w-36 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
                       <Image src={member.src} alt={member.alt} width={112} height={112} className="w-full h-full object-cover" />
                     </div>
-                    <div className="font-semibold text-gray-800 text-xs sm:text-sm text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
-                    <div className="text-[10px] sm:text-xs text-gray-500 text-center line-clamp-2">{member.role}</div>
+                    <div className="font-semibold text-gray-800 text-xs sm:text-sm md:text-base text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
+                    <div className="text-[10px] sm:text-xs md:text-sm text-gray-500 text-center line-clamp-2">{member.role}</div>
                   </div>
                 ))}
               </div>
@@ -702,12 +702,12 @@ export default function LandingPage() {
                   { src: "/team/remo.jpg", alt: "Remo Panaccione (MD)", name: "Remo Panaccione (MD)", role: "Clinician Advisor" },
                   { src: "/team/maitreyi.jpg", alt: "Maitreyi Raman (MD)", name: "Maitreyi Raman (MD)", role: "Clinician Advisor" },
                 ].map((member, index) => (
-                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] md:h-[240px] lg:h-[260px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 md:h-32 lg:h-36 w-24 sm:w-28 md:w-32 lg:w-36 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
                       <Image src={member.src} alt={member.alt} width={112} height={112} className="w-full h-full object-cover" />
                     </div>
-                    <div className="font-semibold text-gray-800 text-xs sm:text-sm text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
-                    <div className="text-[10px] sm:text-xs text-gray-500 text-center line-clamp-2">{member.role}</div>
+                    <div className="font-semibold text-gray-800 text-xs sm:text-sm md:text-base text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
+                    <div className="text-[10px] sm:text-xs md:text-sm text-gray-500 text-center line-clamp-2">{member.role}</div>
                   </div>
                 ))}
               </div>
@@ -721,12 +721,12 @@ export default function LandingPage() {
                   { src: "/team/jasmine.jpg", alt: "Jasmine Zangeneh", name: "Jasmine Zangeneh", role: "Senior Engineer" },
                   { src: "/team/justin.jpg", alt: "Justine Mangaliman", name: "Justine Mangaliman", role: "Full Stack Developer" },
                 ].map((member, index) => (
-                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] md:h-[240px] lg:h-[260px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 md:h-32 lg:h-36 w-24 sm:w-28 md:w-32 lg:w-36 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
                       <Image src={member.src} alt={member.alt} width={112} height={112} className="w-full h-full object-cover" />
                     </div>
-                    <div className="font-semibold text-gray-800 text-xs sm:text-sm text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
-                    <div className="text-[10px] sm:text-xs text-gray-500 text-center line-clamp-2">{member.role}</div>
+                    <div className="font-semibold text-gray-800 text-xs sm:text-sm md:text-base text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
+                    <div className="text-[10px] sm:text-xs md:text-sm text-gray-500 text-center line-clamp-2">{member.role}</div>
                   </div>
                 ))}
               </div>
@@ -739,12 +739,12 @@ export default function LandingPage() {
                   { src: "/team/aarav.jpg", alt: "Aarav Mazumder", name: "Aarav Mazumder", role: "Junior Technical Intern" },
                   { src: "/team/Liam.JPG", alt: "Liam", name: "Liam", role: "Front End Developer" },
                 ].map((member, index) => (
-                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] md:h-[240px] lg:h-[260px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 md:h-32 lg:h-36 w-24 sm:w-28 md:w-32 lg:w-36 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
                       <Image src={member.src} alt={member.alt} width={112} height={112} className="w-full h-full object-cover" />
                     </div>
-                    <div className="font-semibold text-gray-800 text-xs sm:text-sm text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
-                    <div className="text-[10px] sm:text-xs text-gray-500 text-center line-clamp-2">{member.role}</div>
+                    <div className="font-semibold text-gray-800 text-xs sm:text-sm md:text-base text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
+                    <div className="text-[10px] sm:text-xs md:text-sm text-gray-500 text-center line-clamp-2">{member.role}</div>
                   </div>
                 ))}
               </div>
