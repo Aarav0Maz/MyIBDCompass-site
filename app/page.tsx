@@ -675,101 +675,78 @@ export default function LandingPage() {
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent/80">Meet the Team</span>
             </h2>
           </div>
-          <div className="grid gap-6 grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto">
-            {/* Top row: Aryan & Alexandra centered */}
-            <div className="md:col-span-3 flex justify-center gap-6">
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up max-w-xs w-full">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/aryan.jpg" alt="Aryan Shah (BSc)" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Aryan Shah (BSc)</div>
-                <div className="text-sm text-gray-500 text-center">Co-founder</div>
-              </div>
-
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up max-w-xs w-full">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/alexandra.jpg" alt="Alexandra Gleave (MD)" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Alexandra Gleave (MD)</div>
-                <div className="text-sm text-gray-500 text-center">Co-founder</div>
-              </div>
-            </div>
-
-            {/* Middle row: Neeraj, Remo, Maitreyi */}
-            <div className="md:col-span-3 grid md:grid-cols-3 gap-6">
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/neeraj.jpg" alt="Neeraj Narula (MD)" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Neeraj Narula (MD)</div>
-                <div className="text-sm text-gray-500 text-center">Clinician Advisor</div>
-              </div>
-
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/remo.jpg" alt="Remo Panaccione (MD)" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Remo Panaccione (MD)</div>
-                <div className="text-sm text-gray-500 text-center">Clinician Advisor</div>
-              </div>
-
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/maitreyi.jpg" alt="Maitreyi Raman (MD)" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Maitreyi Raman (MD)</div>
-                <div className="text-sm text-gray-500 text-center">Clinician Advisor</div>
+          <div className="space-y-6">
+            {/* Row 1: Aryan & Alexandra */}
+            <div className="flex justify-center">
+              <div className="grid gap-6 grid-cols-2 w-full max-w-2xl px-2">
+                {[
+                  { src: "/team/aryan.jpg", alt: "Aryan Shah (BSc)", name: "Aryan Shah (BSc)", role: "Co-founder" },
+                  { src: "/team/alexandra.jpg", alt: "Alexandra Gleave (MD)", name: "Alexandra Gleave (MD)", role: "Co-founder" },
+                ].map((member, index) => (
+                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                      <Image src={member.src} alt={member.alt} width={112} height={112} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="font-semibold text-gray-800 text-xs sm:text-sm text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
+                    <div className="text-[10px] sm:text-xs text-gray-500 text-center line-clamp-2">{member.role}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Bottom rows: Prangad, Jasmine, Justine, then Liam & Aarav */}
-            <div className="md:col-span-3 grid md:grid-cols-3 gap-6">
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/prangad.jpg" alt="Prangad Gupta" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Prangad Gupta</div>
-                <div className="text-sm text-gray-500 text-center">Clinical Validation and Operations</div>
-              </div>
-
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm flex items-center justify-center">
-                  <Image
-                    src="/team/jasmine-placeholder.svg"
-                    alt="Jasmine placeholder"
-                    width={128}
-                    height={128}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Jasmine</div>
-                <div className="text-sm text-gray-500 text-center">Senior Engineer</div>
-              </div>
-
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/justin.jpg" alt="Justine Mangaliman" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Justine Mangaliman</div>
-                <div className="text-sm text-gray-500 text-center">Full Stack Developer</div>
+            {/* Row 2: 3 Clinical Advisors */}
+            <div className="flex justify-center">
+              <div className="grid gap-6 grid-cols-3 w-full max-w-2xl px-2">
+                {[
+                  { src: "/team/neeraj.jpg", alt: "Neeraj Narula (MD)", name: "Neeraj Narula (MD)", role: "Clinician Advisor" },
+                  { src: "/team/remo.jpg", alt: "Remo Panaccione (MD)", name: "Remo Panaccione (MD)", role: "Clinician Advisor" },
+                  { src: "/team/maitreyi.jpg", alt: "Maitreyi Raman (MD)", name: "Maitreyi Raman (MD)", role: "Clinician Advisor" },
+                ].map((member, index) => (
+                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                      <Image src={member.src} alt={member.alt} width={112} height={112} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="font-semibold text-gray-800 text-xs sm:text-sm text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
+                    <div className="text-[10px] sm:text-xs text-gray-500 text-center line-clamp-2">{member.role}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="md:col-span-3 grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/Liam.JPG" alt="Liam" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Liam</div>
-                <div className="text-sm text-gray-500 text-center">Front End Developer</div>
+            {/* Row 3: Prangad, Jasmine, Justine */}
+            <div className="flex justify-center">
+              <div className="grid gap-6 grid-cols-3 w-full max-w-2xl px-2">
+                {[
+                  { src: "/team/prangad.jpg", alt: "Prangad Gupta", name: "Prangad Gupta", role: "Clinical Validation and Operations" },
+                  { src: "/team/jasmine.jpg", alt: "Jasmine Zangeneh", name: "Jasmine Zangeneh", role: "Senior Engineer" },
+                  { src: "/team/justin.jpg", alt: "Justine Mangaliman", name: "Justine Mangaliman", role: "Full Stack Developer" },
+                ].map((member, index) => (
+                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                      <Image src={member.src} alt={member.alt} width={112} height={112} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="font-semibold text-gray-800 text-xs sm:text-sm text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
+                    <div className="text-[10px] sm:text-xs text-gray-500 text-center line-clamp-2">{member.role}</div>
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 min-h-[180px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
-                <div className="mb-4 h-32 w-32 rounded-full bg-gray-100 overflow-hidden shadow-sm">
-                  <Image src="/team/aarav.jpg" alt="Aarav Mazumder" width={128} height={128} className="w-full h-full object-cover" />
-                </div>
-                <div className="font-semibold text-gray-800 text-base text-center mb-1">Aarav Mazumder</div>
-                <div className="text-sm text-gray-500 text-center">Junior Technical Intern</div>
+            {/* Row 4: Aarav & Liam */}
+            <div className="flex justify-center">
+              <div className="grid gap-6 grid-cols-2 w-full max-w-2xl px-2">
+                {[
+                  { src: "/team/aarav.jpg", alt: "Aarav Mazumder", name: "Aarav Mazumder", role: "Junior Technical Intern" },
+                  { src: "/team/Liam.JPG", alt: "Liam", name: "Liam", role: "Front End Developer" },
+                ].map((member, index) => (
+                  <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-3 sm:p-4 h-[200px] sm:h-[220px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
+                    <div className="mb-2 sm:mb-3 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                      <Image src={member.src} alt={member.alt} width={112} height={112} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="font-semibold text-gray-800 text-xs sm:text-sm text-center mb-0.5 sm:mb-1 line-clamp-2">{member.name}</div>
+                    <div className="text-[10px] sm:text-xs text-gray-500 text-center line-clamp-2">{member.role}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
