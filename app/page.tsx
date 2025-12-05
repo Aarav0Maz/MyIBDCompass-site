@@ -736,8 +736,8 @@ export default function LandingPage() {
             <div className="flex justify-center">
               <div className="grid gap-6 grid-cols-2 w-full max-w-2xl px-2">
                 {[
-                  { src: "/team/aarav.jpg", alt: "Aarav Mazumder", name: "Aarav Mazumder", role: "Junior Technical Intern" },
                   { src: "/team/Liam.JPG", alt: "Liam", name: "Liam", role: "Front End Developer" },
+                  { src: "/team/aarav.jpg", alt: "Aarav Mazumder", name: "Aarav Mazumder", role: "Junior Technical Intern" },
                 ].map((member, index) => (
                   <div key={index} className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-2 sm:p-4 h-auto sm:h-[220px] md:h-[240px] lg:h-[260px] shadow-sm hover:shadow-md transition-all duration-500 ease-in-out hover:border-gray-200 animate-fade-slide-up">
                     <div className="mb-2 sm:mb-3 h-20 sm:h-28 md:h-32 lg:h-36 w-20 sm:w-28 md:w-32 lg:w-36 rounded-full bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
@@ -946,7 +946,7 @@ export default function LandingPage() {
         </div>
       )}
       <div className="fixed bottom-2 right-4 text-[8px] text-gray-300 pointer-events-none opacity-40">
-        V1.12
+        V1.13
       </div>
     </div>
   )
